@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Password Analyzer</title>
+        <link rel="stylesheet" href="pass.css">
+        <script src="analyzer.js"></script> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script>
+        $(document).ready(function(){
+            $("button").click(function(){
+                $("#divText").fadeOut();
+                $("#table").delay(400).fadeIn();
+            });
+        });
+        </script>
+        <!-- Include Chart.js library from CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    </head>
+    <body>
+        <p>PASSWORD ANALYZER</p>
+        <div id="divText">
+            <textarea class="scale-up-center" type="text" id="textarea" rows="4" cols="80"  placeholder="Enter Your Password..."></textarea>
+            <button id="analyze" type="button" class="scale-up-center" onclick="Analyze()">Analyze</button>
+        </div>
+        <table id="table" >
+            <th colspan="2" style="text-align: right;"><h1>Analysis</h1></th>
+            <tr>
+                <td>&#8226 Password Length</td>
+                <td class="dots">:</td>
+                <td id="length" style="color: #fff;">n</td>
+            </tr>
+            <tr>
+                <td>&#8226 Entropy</td>
+                <td class="dots">:</td>
+                <td id="entropy" style=" color: #fff;">n</td>
+            </tr>
+            <tr>
+                <td >&#8226 Length greater/equal to 8</td>
+                <td class="dots">:</td>
+                <td id="len" style="color: #fff;">n</td>
+            </tr>
+            <tr>
+                <td >&#8226 At least 1 Digit</td>
+                <td class="dots">:</td>
+                <td id="digit" style="color: #fff;">n</td>
+            </tr>
+            <tr>
+                <td >&#8226 At least 1 LowerCase letter</td>
+                <td class="dots">:</td>
+                <td id="lowercase" style="color: #fff;">n</td>
+            </tr>
+            <tr>
+                <td >&#8226 At least 1 UpperCase letter</td>
+                <td class="dots">:</td>
+                <td id="uppercase" style="color: #fff;">n</td>
+            </tr>
+            <tr>
+                <td >&#8226 At least 1 Symbol</td>
+                <td class="dots">:</td>
+                <td id="sym" style="color: #fff;">n</td>
+            </tr>
+            <tr>
+                <td >&#8226 Present in Blacklist?</td>
+                <td class="dots">:</td>
+                <td id="blacklist" style="color: #fff;">n</td>
+            </tr>
+            <tr>
+                <td >&#8226 Time taken to crack the password (Brute Force Method)</td>
+                <td class="dots">:</td>
+                <td id="brute" style="color: #fff;">n</td>
+            </tr>
+            <tr>
+                <td >&#8226 Hashed Password</td>
+                <td class="dots">:</td>
+                <td id="hash" style="color: #fff;">n</td>
+            </tr>
+            <tr>
+                <td >&#8226 Complexity</td>
+                <td class="dots">:</td>
+                <td id="complexity" style="color: #fff;">n</td>
+            </tr>
+            <tr>
+                <td >&#8226 Graphical Representation</td>
+                <td class="dots">:</td>
+                <td id="graph" style="color: #fff; width: 400px; height: 400px;"><canvas id="myChart" width="400" height="400"></canvas></td>
+            </tr>
+            <tr>
+                <td colspan="3" style="text-align: start; height: 600px;">&#8226 BlackList:<button id="show" onclick="Blacklist()">SHOW</button><br><br><canvas id="myChart1" width="600" height="300"></canvas></td>
+            </tr>
+            <tr></tr><tr></tr>
+            <tr>
+                <td>&#8226 How is the analysis done? - <button id="how" onclick="DisplayData()">?</button></td>
+            </tr>
+            <tr>
+                <td colspan="3" id="data" style="color: #fff;">xxx</td>
+            </tr>
+        </table>
+    </body>
+</html>
